@@ -8,7 +8,7 @@ create table tb_classe(
 
 id bigint(2) auto_increment,
 categoria varchar(20),
-habilidade_especial boolean,
+habilidade_especial varchar(50),
 tribo varchar(20),
 primary key (id)
 );
@@ -30,11 +30,11 @@ foreign key (classe_id) references tb_classe (id)
 
 -- Inserindo dados na tabela Classes
 
-insert into tb_classe (categoria, habilidade_especial, tribo) values ("Mago", true, "Água");
-insert into tb_classe (categoria, habilidade_especial, tribo) values ("Escudeira", false, "Terra");
-insert into tb_classe (categoria, habilidade_especial, tribo) values ("Arqueira", false, "Relampago");
-insert into tb_classe (categoria, habilidade_especial, tribo) values ("Cavaleiro", false, "Terra");
-insert into tb_classe (categoria, habilidade_especial, tribo) values ("Feiticeira", true, "Ar");
+insert into tb_classe (categoria, habilidade_especial, tribo) values ("Mago", "Prever ataques", "Água");
+insert into tb_classe (categoria, habilidade_especial, tribo) values ("Escudeira", "Campo de força", "Terra");
+insert into tb_classe (categoria, habilidade_especial, tribo) values ("Arqueira", "Flechas elétricas", "Relampago");
+insert into tb_classe (categoria, habilidade_especial, tribo) values ("Cavaleiro", "Espada ", "Terra");
+insert into tb_classe (categoria, habilidade_especial, tribo) values ("Feiticeira", "Retirar o ar do pulmão dos adversários", "Ar");
 
 -- Inserindo daddos na tabela Personagens
 
@@ -53,7 +53,7 @@ select * from tb_personagem where ataque > 2000;
 
 -- Personagens com poder de defesa entre 1000 e 2000
 
-select * from tb_personagem where defesa > 1000 and defesa < 2000;
+select * from tb_personagem where defesa between 1000 and 2000;
 
 -- Personagens que possuem a letra 'c' no nome
 
@@ -77,4 +77,4 @@ INNER JOIN
     
     -- Selecionando todas arqueiras
     
-    select (personagem) from tb_classe where classe_id = 3;
+    select nome from tb_personagem where classe_id = 3;
